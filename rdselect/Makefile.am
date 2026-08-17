@@ -39,8 +39,8 @@ uninstall-local:
 	rm -f $(DESTDIR)/etc/auto.master.d/rd.audiostore.autofs
 
 all:	
-	lupdate-qt4 rdselect.pro
-	lrelease-qt4 rdselect.pro
+	@QT_LUPDATE@ rdselect.pro
+	@QT_LRELEASE@ rdselect.pro
 
 bin_PROGRAMS = rdselect
 

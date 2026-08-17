@@ -37,8 +37,8 @@ uninstall-local:
 	rm -f $(DESTDIR)$(prefix)/share/rivendell/rdcartslots_*.qm
 
 all:	
-	lupdate-qt4 rdcartslots.pro
-	lrelease-qt4 rdcartslots.pro
+	@QT_LUPDATE@ rdcartslots.pro
+	@QT_LRELEASE@ rdcartslots.pro
 
 bin_PROGRAMS = rdcartslots
 

@@ -35,8 +35,8 @@ uninstall-local:
 	rm -f $(DESTDIR)$(prefix)/share/rivendell/rdpanel_*.qm
 
 all:	
-	lupdate-qt4 rdpanel.pro
-	lrelease-qt4 rdpanel.pro
+	@QT_LUPDATE@ rdpanel.pro
+	@QT_LRELEASE@ rdpanel.pro
 
 bin_PROGRAMS = rdpanel
 

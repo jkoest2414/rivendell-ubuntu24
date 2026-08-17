@@ -34,8 +34,8 @@ uninstall-local:
 	rm -f $(DESTDIR)$(prefix)/share/rivendell/rddgimport_*.qm
 
 all:	
-	lupdate-qt4 rddgimport.pro
-	lrelease-qt4 rddgimport.pro
+	@QT_LUPDATE@ rddgimport.pro
+	@QT_LRELEASE@ rddgimport.pro
 
 bin_PROGRAMS = rddgimport
 

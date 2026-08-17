@@ -37,8 +37,8 @@ uninstall-local:
 	rm -f $(DESTDIR)$(prefix)/share/rivendell/rdcatch_*.qm
 
 all:	
-	lupdate-qt4 rdcatch.pro
-	lrelease-qt4 rdcatch.pro
+	@QT_LUPDATE@ rdcatch.pro
+	@QT_LRELEASE@ rdcatch.pro
 
 bin_PROGRAMS = rdcatch
 

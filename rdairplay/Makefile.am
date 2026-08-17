@@ -37,8 +37,8 @@ uninstall-local:
 	rm -f $(DESTDIR)$(prefix)/share/rivendell/rdairplay_*.qm
 
 all:	
-	lupdate-qt4 rdairplay.pro
-	lrelease-qt4 rdairplay.pro
+	@QT_LUPDATE@ rdairplay.pro
+	@QT_LRELEASE@ rdairplay.pro
 
 bin_PROGRAMS = rdairplay
 

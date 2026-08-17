@@ -122,6 +122,8 @@ PKG_CHECK_MODULES(QT5,Qt5Core Qt5Widgets Qt5Gui Qt5Network Qt5Sql Qt5Xml,,[AC_MS
 PKG_CHECK_MODULES(QT5_CLI,Qt5Core Qt5Network Qt5Sql Qt5Xml,,[AC_MSG_ERROR([*** Qt5 not found ***])])
 AC_CHECK_PROG(MOC_NAME,moc-qt5,[moc-qt5],[moc])
 AC_SUBST(QT_MOC,$MOC_NAME)
+AC_PATH_PROGS(QT_LUPDATE,[lupdate-qt5 lupdate],[/usr/lib/qt5/bin/lupdate])
+AC_PATH_PROGS(QT_LRELEASE,[lrelease-qt5 lrelease],[/usr/lib/qt5/bin/lrelease])
 
 
 #
@@ -130,12 +132,17 @@ AC_SUBST(QT_MOC,$MOC_NAME)
 AR_GCC_TARGET()
 AC_SUBST(VENDOR,$ar_gcc_distro)
 AC_SUBST(ARCH,$ar_gcc_arch)
+if test -f /etc/debian_version ; then
+  LIB_PATH=$PREFIX/lib
+  AC_SUBST(RD_LIB_PATH,lib)
+else
 if test $ar_gcc_arch = x86_64 ; then
   LIB_PATH=$PREFIX/lib64
   AC_SUBST(RD_LIB_PATH,lib64)
 else
   LIB_PATH=$PREFIX/lib
   AC_SUBST(RD_LIB_PATH,lib)
+fi
 fi
 
 #
@@ -157,6 +164,14 @@ fi
 #
 AR_GET_DISTRO()
 AC_SUBST(DISTRO,$ar_gcc_distro)
+if test -f /etc/debian_version ; then
+  AC_SUBST(APACHE_PKG,"apache2")
+  AC_SUBST(APACHE_CONFIG_DIR,"/etc/apache2/conf-available")
+  AC_SUBST(USERMODE_PKG,"")
+  AC_SUBST(MYSQL_PKG,"mariadb-server")
+  AC_SUBST(QT4_MYSQL_PKG,"libqt5sql5-mysql")
+  AC_SUBST(DOC_PATH,"/usr/share/doc/rivendell")
+else
 if test $ar_gcc_distro = suse ; then
   AC_SUBST(APACHE_PKG,"apache2")
   AC_SUBST(APACHE_CONFIG_DIR,"/etc/apache2/conf.d")
@@ -184,6 +199,7 @@ else
       AC_SUBST(QT4_MYSQL_PKG,"qt-MySQL")
     fi
   fi
+fi
 fi
 
 #
@@ -238,7 +254,7 @@ fi
 # Check for MusicBrainz support libraries
 # (libdiscid, libmusicbrainz and libcoverart)
 #
-PKG_CHECK_MODULES(MUSICBRAINZ,libdiscid libmusicbrainz5 libcoverart,,[AC_MSG_ERROR([*** One or more MusicBrainz libraries not found ***])])
+PKG_CHECK_MODULES(MUSICBRAINZ,libdiscid libmusicbrainz5cc libcoverartcc,,[AC_MSG_ERROR([*** One or more MusicBrainz libraries not found ***])])
 
 #
 # Check for Id3Lib

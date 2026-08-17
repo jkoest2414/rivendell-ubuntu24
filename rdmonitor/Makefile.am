@@ -35,8 +35,8 @@ uninstall-local:
 	rm -f $(DESTDIR)$(prefix)/share/rivendell/rdmonitor_*.qm
 
 all:	
-	lupdate-qt4 rdmonitor.pro
-	lrelease-qt4 rdmonitor.pro
+	@QT_LUPDATE@ rdmonitor.pro
+	@QT_LRELEASE@ rdmonitor.pro
 
 bin_PROGRAMS = rdmonitor
 

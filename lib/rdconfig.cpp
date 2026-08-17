@@ -29,7 +29,6 @@
 #include <sys/types.h>
 
 #include <qdatetime.h>
-#include <qmessagebox.h>
 #include <qobject.h>
 #include <qregexp.h>
 #include <qsettings.h>

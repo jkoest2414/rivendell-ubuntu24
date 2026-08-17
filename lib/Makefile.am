@@ -39,8 +39,8 @@ uninstall-local:
 	rm -f $(DESTDIR)$(prefix)/share/rivendell/librd_*.qm
 
 all:	
-	lupdate-qt4 lib.pro
-	lrelease-qt4 lib.pro
+	@QT_LUPDATE@ lib.pro
+	@QT_LRELEASE@ lib.pro
 
 lib_LTLIBRARIES = librd.la
 dist_librd_la_SOURCES = dbversion.h\

@@ -29,6 +29,7 @@
 
 #include <QObject>
 #include <QProcess>
+#include <QTimer>
 #include <QUdpSocket>
 
 #include <rdwavefile.h>

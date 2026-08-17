@@ -1,0 +1,7 @@
+*.sh text eol=lf
+*.pl text eol=lf
+*.ac text eol=lf
+*.am text eol=lf
+*.m4 text eol=lf
+*.in text eol=lf
+PACKAGE_VERSION text eol=lf

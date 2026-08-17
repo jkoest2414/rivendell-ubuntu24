@@ -34,8 +34,8 @@ uninstall-local:
 	rm -f $(DESTDIR)$(prefix)/share/rivendell/rmlsend_*.qm
 
 all:	
-	lupdate-qt4 rmlsend.pro
-	lrelease-qt4 rmlsend.pro
+	@QT_LUPDATE@ rmlsend.pro
+	@QT_LRELEASE@ rmlsend.pro
 
 bin_PROGRAMS = rmlsend
 
